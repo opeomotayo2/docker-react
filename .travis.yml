@@ -5,5 +5,18 @@ services:
 before_install:
   - docker build -t opeomotayo/docker-react -f Dockerfile.dev .
 
-script:
-  -  docker run opeomotayo/docker-react npm run test -- --coverage
+# script:
+#   -  docker run opeomotayo/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker"
+  env: "Docker-env"
+  bucker_name: "elasticbeanstalk-us-east-1-338554425790"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
