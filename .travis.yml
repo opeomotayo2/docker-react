@@ -5,8 +5,8 @@ services:
 before_install:
   - docker build -t opeomotayo/docker-react -f Dockerfile.dev .
 
-# script:
-#   -  docker run opeomotayo/docker-react npm run test -- --coverage
+script:
+  -  docker run opeomotayo/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
